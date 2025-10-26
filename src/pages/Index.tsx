@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import Character from '@/components/Character';
 
 interface ClothingItem {
   id: string;
@@ -72,10 +73,10 @@ const Index = () => {
     bottom: string | null;
     shoes: string | null;
   }>({
-    hat: 'hat1',
-    top: 'top1',
+    hat: 'hat2',
+    top: 'top3',
     bottom: 'bottom1',
-    shoes: 'shoes1'
+    shoes: 'shoes2'
   });
 
   const [isChanging, setIsChanging] = useState(false);
@@ -154,39 +155,9 @@ const Index = () => {
 
           <TabsContent value="home" className="animate-fade-in">
             <div className="grid lg:grid-cols-2 gap-8 items-start">
-              <Card className="p-8 bg-card/80 backdrop-blur sticky top-24">
-                <div className="flex flex-col items-center justify-center min-h-[500px] relative">
-                  <div className={`transition-all duration-500 ${isChanging ? 'animate-outfit-change' : ''}`}>
-                    <div className="text-8xl mb-4">🧑</div>
-                    <div className="space-y-3 text-center">
-                      {getCurrentItem('hat') && (
-                        <div className="flex items-center justify-center gap-2 animate-slide-up">
-                          <span className="text-4xl">{getCurrentItem('hat')?.emoji}</span>
-                          <span className="text-sm text-muted-foreground">{getCurrentItem('hat')?.name}</span>
-                        </div>
-                      )}
-                      {getCurrentItem('top') && (
-                        <div className="flex items-center justify-center gap-2 animate-slide-up">
-                          <span className="text-4xl">{getCurrentItem('top')?.emoji}</span>
-                          <span className="text-sm text-muted-foreground">{getCurrentItem('top')?.name}</span>
-                        </div>
-                      )}
-                      {getCurrentItem('bottom') && (
-                        <div className="flex items-center justify-center gap-2 animate-slide-up">
-                          <span className="text-4xl">{getCurrentItem('bottom')?.emoji}</span>
-                          <span className="text-sm text-muted-foreground">{getCurrentItem('bottom')?.name}</span>
-                        </div>
-                      )}
-                      {getCurrentItem('shoes') && (
-                        <div className="flex items-center justify-center gap-2 animate-slide-up">
-                          <span className="text-4xl">{getCurrentItem('shoes')?.emoji}</span>
-                          <span className="text-sm text-muted-foreground">{getCurrentItem('shoes')?.name}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </Card>
+              <div className="sticky top-24">
+                <Character outfit={currentOutfit} isChanging={isChanging} wardrobeItems={wardrobeItems} />
+              </div>
 
               <div className="space-y-6">
                 <div>
@@ -231,25 +202,9 @@ const Index = () => {
 
           <TabsContent value="wardrobe" className="animate-fade-in">
             <div className="grid lg:grid-cols-3 gap-8">
-              <Card className="lg:col-span-1 p-6 bg-card/80 backdrop-blur h-fit sticky top-24">
-                <h3 className="font-heading font-semibold text-lg mb-4">Ваш образ</h3>
-                <div className={`transition-all duration-500 ${isChanging ? 'animate-outfit-change' : ''}`}>
-                  <div className="text-6xl mb-4 text-center">🧑</div>
-                  <div className="space-y-2">
-                    {(['hat', 'top', 'bottom', 'shoes'] as const).map(type => {
-                      const item = getCurrentItem(type);
-                      return (
-                        <div key={type} className="flex items-center gap-2 p-2 rounded bg-muted/30">
-                          <span className="text-2xl">{item?.emoji || '❌'}</span>
-                          <span className="text-sm text-muted-foreground">
-                            {item?.name || 'Не выбрано'}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Card>
+              <div className="lg:col-span-1 sticky top-24">
+                <Character outfit={currentOutfit} isChanging={isChanging} wardrobeItems={wardrobeItems} />
+              </div>
 
               <div className="lg:col-span-2 space-y-6">
                 {(['hat', 'top', 'bottom', 'shoes'] as const).map(type => {
@@ -292,24 +247,9 @@ const Index = () => {
 
           <TabsContent value="collections" className="animate-fade-in">
             <div className="grid lg:grid-cols-2 gap-8">
-              <Card className="p-8 bg-card/80 backdrop-blur sticky top-24">
-                <div className="flex flex-col items-center justify-center min-h-[500px]">
-                  <div className={`transition-all duration-500 ${isChanging ? 'animate-outfit-change' : ''}`}>
-                    <div className="text-8xl mb-4">🧑</div>
-                    <div className="space-y-3 text-center">
-                      {(['hat', 'top', 'bottom', 'shoes'] as const).map(type => {
-                        const item = getCurrentItem(type);
-                        return item ? (
-                          <div key={type} className="flex items-center justify-center gap-2 animate-slide-up">
-                            <span className="text-4xl">{item.emoji}</span>
-                            <span className="text-sm text-muted-foreground">{item.name}</span>
-                          </div>
-                        ) : null;
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </Card>
+              <div className="sticky top-24">
+                <Character outfit={currentOutfit} isChanging={isChanging} wardrobeItems={wardrobeItems} />
+              </div>
 
               <div className="space-y-4">
                 <div>
