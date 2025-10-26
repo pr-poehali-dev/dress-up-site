@@ -72,40 +72,29 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
         }}
       >
         <div className="relative flex flex-col items-center">
+          <div className="text-[180px] leading-none">🧍</div>
+          
           {getCurrentItem('hat') && (
-            <div className="text-3xl mb-1 animate-slide-up">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
               {getCurrentItem('hat')?.emoji}
             </div>
           )}
           
-          <div className="text-5xl mb-1">😊</div>
-          
           {getCurrentItem('top') && (
-            <div className="text-4xl mb-1 animate-slide-up">
+            <div className="absolute top-[80px] left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
               {getCurrentItem('top')?.emoji}
             </div>
           )}
           
-          <div className="flex gap-3 mb-1">
-            <div className="text-3xl">🦾</div>
-            <div className="text-3xl">🦾</div>
-          </div>
-          
           {getCurrentItem('bottom') && (
-            <div className="text-4xl mb-1 animate-slide-up">
+            <div className="absolute top-[130px] left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
               {getCurrentItem('bottom')?.emoji}
             </div>
           )}
           
-          <div className="flex gap-2 mb-1">
-            <div className="text-3xl">🦵</div>
-            <div className="text-3xl">🦵</div>
-          </div>
-          
           {getCurrentItem('shoes') && (
-            <div className="flex gap-3 animate-slide-up">
-              <div className="text-3xl">{getCurrentItem('shoes')?.emoji}</div>
-              <div className="text-3xl">{getCurrentItem('shoes')?.emoji}</div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-5xl animate-slide-up">
+              {getCurrentItem('shoes')?.emoji}
             </div>
           )}
         </div>
