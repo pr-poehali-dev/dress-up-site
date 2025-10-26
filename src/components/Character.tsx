@@ -59,11 +59,11 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
   }, [isWalking, direction]);
 
   return (
-    <div className="relative w-full h-[500px] bg-gradient-to-b from-card to-muted/30 rounded-lg overflow-hidden border border-border">
+    <div className="relative w-full h-[600px] bg-gradient-to-b from-card to-muted/30 rounded-lg overflow-hidden border border-border">
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-primary/20"></div>
       
       <div 
-        className={`absolute bottom-8 transition-all duration-100 ${
+        className={`absolute bottom-24 transition-all duration-100 ${
           isJumping ? 'animate-bounce' : ''
         } ${isChanging ? 'animate-outfit-change' : ''}`}
         style={{ 
@@ -71,36 +71,34 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
           transform: `translateX(-50%) ${direction === 'left' ? 'scaleX(-1)' : 'scaleX(1)'}`
         }}
       >
-        <div className="relative flex flex-col items-center">
+        <div className="relative flex flex-col items-center gap-2">
           {getCurrentItem('hat') && (
-            <div className="text-5xl mb-[-20px] z-10 animate-slide-up">
+            <div className="text-4xl animate-slide-up">
               {getCurrentItem('hat')?.emoji}
             </div>
           )}
           
-          <div className="text-7xl">🕴️</div>
+          <div className="text-6xl">🧑</div>
           
-          <div className="absolute top-[40px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-            {getCurrentItem('top') && (
-              <div className="text-4xl animate-slide-up">
-                {getCurrentItem('top')?.emoji}
-              </div>
-            )}
-            {getCurrentItem('bottom') && (
-              <div className="text-4xl animate-slide-up">
-                {getCurrentItem('bottom')?.emoji}
-              </div>
-            )}
-            {getCurrentItem('shoes') && (
-              <div className="text-3xl animate-slide-up">
-                {getCurrentItem('shoes')?.emoji}
-              </div>
-            )}
-          </div>
+          {getCurrentItem('top') && (
+            <div className="text-5xl mt-[-20px] animate-slide-up">
+              {getCurrentItem('top')?.emoji}
+            </div>
+          )}
+          {getCurrentItem('bottom') && (
+            <div className="text-5xl mt-[-10px] animate-slide-up">
+              {getCurrentItem('bottom')?.emoji}
+            </div>
+          )}
+          {getCurrentItem('shoes') && (
+            <div className="text-4xl mt-[-5px] animate-slide-up">
+              {getCurrentItem('shoes')?.emoji}
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 bg-card/80 backdrop-blur p-3 rounded-lg border border-border">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 bg-card/80 backdrop-blur p-3 rounded-lg border border-border z-10">
         <Button
           size="sm"
           variant="secondary"
@@ -133,7 +131,7 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
         </Button>
       </div>
 
-      <div className="absolute top-4 right-4 bg-card/80 backdrop-blur p-3 rounded-lg border border-border">
+      <div className="absolute top-4 right-4 bg-card/80 backdrop-blur p-3 rounded-lg border border-border max-w-[200px]">
         <div className="text-xs text-muted-foreground mb-2">Текущий образ:</div>
         <div className="flex flex-col gap-1">
           {(['hat', 'top', 'bottom', 'shoes'] as const).map(type => {
@@ -141,7 +139,7 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
             return item ? (
               <div key={type} className="flex items-center gap-2 text-xs">
                 <span className="text-lg">{item.emoji}</span>
-                <span>{item.name}</span>
+                <span className="truncate">{item.name}</span>
               </div>
             ) : null;
           })}
