@@ -71,29 +71,29 @@ const Character = ({ outfit, isChanging, wardrobeItems }: CharacterProps) => {
           transform: `translateX(-50%) ${direction === 'left' ? 'scaleX(-1)' : 'scaleX(1)'}`
         }}
       >
-        <div className="relative flex flex-col items-center">
-          <div className="text-[180px] leading-none">🧍</div>
-          
+        <div className="flex flex-col items-center gap-1">
           {getCurrentItem('hat') && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
+            <div className="text-4xl animate-slide-up">
               {getCurrentItem('hat')?.emoji}
             </div>
           )}
           
+          <div className="text-6xl">🧑</div>
+          
           {getCurrentItem('top') && (
-            <div className="absolute top-[80px] left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
+            <div className="text-5xl mt-[-10px] animate-slide-up">
               {getCurrentItem('top')?.emoji}
             </div>
           )}
           
           {getCurrentItem('bottom') && (
-            <div className="absolute top-[130px] left-1/2 -translate-x-1/2 text-6xl animate-slide-up">
+            <div className="text-5xl mt-[-5px] animate-slide-up">
               {getCurrentItem('bottom')?.emoji}
             </div>
           )}
           
           {getCurrentItem('shoes') && (
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-5xl animate-slide-up">
+            <div className="text-4xl animate-slide-up">
               {getCurrentItem('shoes')?.emoji}
             </div>
           )}
